@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+toss:
+  secret-key: test_sk_5OWRapdA8dvaJ2GK9zzBVo1zEqZK
+
+spring:
+  datasource:
+    url: jdbc:h2:/home/ubuntu/local;MODE=MySQL;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
