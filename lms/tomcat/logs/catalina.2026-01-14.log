@@ -1,0 +1,2 @@
+14-Jan-2026 05:52:09.955 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/opt/lms/tomcat/webapps/ROOT.war]
+14-Jan-2026 05:52:11.495 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/opt/lms/tomcat/webapps/ROOT.war] has finished in [1,569] ms

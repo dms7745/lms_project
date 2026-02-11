@@ -1,0 +1,236 @@
+18-Dec-2025 07:04:08.551 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.96
+18-Dec-2025 07:04:08.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 3 2024 19:44:30 UTC
+18-Dec-2025 07:04:08.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.96.0
+18-Dec-2025 07:04:08.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+18-Dec-2025 07:04:08.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-1043-aws
+18-Dec-2025 07:04:08.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+18-Dec-2025 07:04:08.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-17-openjdk-amd64
+18-Dec-2025 07:04:08.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.17+10-Ubuntu-122.04
+18-Dec-2025 07:04:08.566 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+18-Dec-2025 07:04:08.566 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /opt/lms/tomcat
+18-Dec-2025 07:04:08.566 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/lms/tomcat
+18-Dec-2025 07:04:08.618 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+18-Dec-2025 07:04:08.618 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+18-Dec-2025 07:04:08.619 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+18-Dec-2025 07:04:08.619 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+18-Dec-2025 07:04:08.619 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+18-Dec-2025 07:04:08.619 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/opt/lms/tomcat/conf/logging.properties
+18-Dec-2025 07:04:08.619 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+18-Dec-2025 07:04:08.619 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+18-Dec-2025 07:04:08.619 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+18-Dec-2025 07:04:08.619 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+18-Dec-2025 07:04:08.620 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+18-Dec-2025 07:04:08.620 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/opt/lms/tomcat
+18-Dec-2025 07:04:08.620 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/lms/tomcat
+18-Dec-2025 07:04:08.620 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/lms/tomcat/temp
+18-Dec-2025 07:04:08.630 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+18-Dec-2025 07:04:09.260 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8000"]
+18-Dec-2025 07:04:09.325 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector["http-nio-8000"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1027)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:525)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:986)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:686)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:709)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:302)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:555)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:268)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:223)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1373)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1386)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:663)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:77)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1025)
+		... 13 more
+18-Dec-2025 07:04:09.327 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1533] milliseconds
+18-Dec-2025 07:04:09.486 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+18-Dec-2025 07:04:09.487 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.96]
+18-Dec-2025 07:04:09.518 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/opt/lms/tomcat/webapps/lms.war]
+18-Dec-2025 07:04:09.851 WARNING [main] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [5.0]. Default version will be used.
+18-Dec-2025 07:04:12.088 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+18-Dec-2025 07:04:12.204 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/opt/lms/tomcat/webapps/lms.war] has finished in [2,682] ms
+18-Dec-2025 07:04:12.205 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/manager]
+18-Dec-2025 07:04:12.315 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/manager] has finished in [109] ms
+18-Dec-2025 07:04:12.315 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/examples]
+18-Dec-2025 07:04:13.062 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/examples] has finished in [746] ms
+18-Dec-2025 07:04:13.062 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/ROOT]
+18-Dec-2025 07:04:13.126 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/ROOT] has finished in [61] ms
+18-Dec-2025 07:04:13.126 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/host-manager]
+18-Dec-2025 07:04:13.202 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/host-manager] has finished in [75] ms
+18-Dec-2025 07:04:13.207 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/docs]
+18-Dec-2025 07:04:13.265 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/docs] has finished in [57] ms
+18-Dec-2025 07:04:13.280 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [3951] milliseconds
+18-Dec-2025 07:05:23.859 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+18-Dec-2025 07:05:23.862 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8000"]
+18-Dec-2025 07:05:23.863 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+18-Dec-2025 07:05:23.954 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8000"]
+18-Dec-2025 07:05:23.960 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8000"]
+18-Dec-2025 07:05:27.807 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.96
+18-Dec-2025 07:05:27.814 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 3 2024 19:44:30 UTC
+18-Dec-2025 07:05:27.814 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.96.0
+18-Dec-2025 07:05:27.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+18-Dec-2025 07:05:27.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-1043-aws
+18-Dec-2025 07:05:27.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+18-Dec-2025 07:05:27.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-17-openjdk-amd64
+18-Dec-2025 07:05:27.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.17+10-Ubuntu-122.04
+18-Dec-2025 07:05:27.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+18-Dec-2025 07:05:27.816 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /opt/lms/tomcat
+18-Dec-2025 07:05:27.817 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/lms/tomcat
+18-Dec-2025 07:05:27.847 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+18-Dec-2025 07:05:27.847 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+18-Dec-2025 07:05:27.847 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+18-Dec-2025 07:05:27.847 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+18-Dec-2025 07:05:27.848 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+18-Dec-2025 07:05:27.848 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/opt/lms/tomcat/conf/logging.properties
+18-Dec-2025 07:05:27.848 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+18-Dec-2025 07:05:27.849 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+18-Dec-2025 07:05:27.849 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+18-Dec-2025 07:05:27.849 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+18-Dec-2025 07:05:27.849 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+18-Dec-2025 07:05:27.849 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/opt/lms/tomcat
+18-Dec-2025 07:05:27.849 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/lms/tomcat
+18-Dec-2025 07:05:27.849 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/lms/tomcat/temp
+18-Dec-2025 07:05:27.852 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+18-Dec-2025 07:05:28.517 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:05:28.591 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1233] milliseconds
+18-Dec-2025 07:05:28.750 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+18-Dec-2025 07:05:28.755 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.96]
+18-Dec-2025 07:05:28.792 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/opt/lms/tomcat/webapps/lms.war]
+18-Dec-2025 07:05:29.476 WARNING [main] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [5.0]. Default version will be used.
+18-Dec-2025 07:05:33.062 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+18-Dec-2025 07:05:33.163 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/opt/lms/tomcat/webapps/lms.war] has finished in [4,370] ms
+18-Dec-2025 07:05:33.164 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/manager]
+18-Dec-2025 07:05:33.276 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/manager] has finished in [112] ms
+18-Dec-2025 07:05:33.278 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/examples]
+18-Dec-2025 07:05:33.901 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/examples] has finished in [623] ms
+18-Dec-2025 07:05:33.901 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/ROOT]
+18-Dec-2025 07:05:33.948 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/ROOT] has finished in [47] ms
+18-Dec-2025 07:05:33.950 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/host-manager]
+18-Dec-2025 07:05:34.015 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/host-manager] has finished in [64] ms
+18-Dec-2025 07:05:34.015 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/docs]
+18-Dec-2025 07:05:34.080 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/docs] has finished in [65] ms
+18-Dec-2025 07:05:34.098 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:05:34.165 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [5570] milliseconds
+18-Dec-2025 07:07:19.057 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+18-Dec-2025 07:07:19.208 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:07:19.738 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+18-Dec-2025 07:07:21.022 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:07:21.470 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:07:21.847 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.96
+18-Dec-2025 07:07:21.854 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 3 2024 19:44:30 UTC
+18-Dec-2025 07:07:21.854 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.96.0
+18-Dec-2025 07:07:21.854 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+18-Dec-2025 07:07:21.854 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-1043-aws
+18-Dec-2025 07:07:21.854 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+18-Dec-2025 07:07:21.854 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-17-openjdk-amd64
+18-Dec-2025 07:07:21.855 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.17+10-Ubuntu-122.04
+18-Dec-2025 07:07:21.855 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+18-Dec-2025 07:07:21.855 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /opt/lms/tomcat
+18-Dec-2025 07:07:21.855 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/lms/tomcat
+18-Dec-2025 07:07:21.896 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+18-Dec-2025 07:07:21.897 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+18-Dec-2025 07:07:21.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+18-Dec-2025 07:07:21.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+18-Dec-2025 07:07:21.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+18-Dec-2025 07:07:21.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/opt/lms/tomcat/conf/logging.properties
+18-Dec-2025 07:07:21.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+18-Dec-2025 07:07:21.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+18-Dec-2025 07:07:21.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+18-Dec-2025 07:07:21.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+18-Dec-2025 07:07:21.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+18-Dec-2025 07:07:21.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/opt/lms/tomcat
+18-Dec-2025 07:07:21.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/lms/tomcat
+18-Dec-2025 07:07:21.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/lms/tomcat/temp
+18-Dec-2025 07:07:21.904 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+18-Dec-2025 07:07:22.511 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:07:22.598 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1386] milliseconds
+18-Dec-2025 07:07:22.710 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+18-Dec-2025 07:07:22.710 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.96]
+18-Dec-2025 07:07:22.758 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/opt/lms/tomcat/webapps/ROOT.war]
+18-Dec-2025 07:07:23.398 WARNING [main] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [5.0]. Default version will be used.
+18-Dec-2025 07:07:25.419 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+18-Dec-2025 07:07:25.517 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/opt/lms/tomcat/webapps/ROOT.war] has finished in [2,757] ms
+18-Dec-2025 07:07:25.518 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/manager]
+18-Dec-2025 07:07:25.617 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/manager] has finished in [98] ms
+18-Dec-2025 07:07:25.617 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/examples]
+18-Dec-2025 07:07:26.156 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/examples] has finished in [538] ms
+18-Dec-2025 07:07:26.156 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/lms]
+18-Dec-2025 07:07:26.298 WARNING [main] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [5.0]. Default version will be used.
+18-Dec-2025 07:07:28.794 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+18-Dec-2025 07:07:28.808 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/lms] has finished in [2,648] ms
+18-Dec-2025 07:07:28.809 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/host-manager]
+18-Dec-2025 07:07:28.858 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/host-manager] has finished in [49] ms
+18-Dec-2025 07:07:28.863 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/docs]
+18-Dec-2025 07:07:28.918 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/docs] has finished in [54] ms
+18-Dec-2025 07:07:28.930 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:07:28.979 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [6380] milliseconds
+18-Dec-2025 07:11:03.310 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+18-Dec-2025 07:11:03.311 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:11:03.324 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+18-Dec-2025 07:11:03.437 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:11:03.452 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:11:07.138 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.96
+18-Dec-2025 07:11:07.149 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 3 2024 19:44:30 UTC
+18-Dec-2025 07:11:07.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.96.0
+18-Dec-2025 07:11:07.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+18-Dec-2025 07:11:07.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-1043-aws
+18-Dec-2025 07:11:07.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+18-Dec-2025 07:11:07.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-17-openjdk-amd64
+18-Dec-2025 07:11:07.151 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.17+10-Ubuntu-122.04
+18-Dec-2025 07:11:07.154 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+18-Dec-2025 07:11:07.154 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /opt/lms/tomcat
+18-Dec-2025 07:11:07.154 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/lms/tomcat
+18-Dec-2025 07:11:07.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+18-Dec-2025 07:11:07.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+18-Dec-2025 07:11:07.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+18-Dec-2025 07:11:07.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+18-Dec-2025 07:11:07.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+18-Dec-2025 07:11:07.215 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/opt/lms/tomcat/conf/logging.properties
+18-Dec-2025 07:11:07.219 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+18-Dec-2025 07:11:07.219 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+18-Dec-2025 07:11:07.219 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+18-Dec-2025 07:11:07.220 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+18-Dec-2025 07:11:07.220 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+18-Dec-2025 07:11:07.220 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/opt/lms/tomcat
+18-Dec-2025 07:11:07.220 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/lms/tomcat
+18-Dec-2025 07:11:07.220 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/lms/tomcat/temp
+18-Dec-2025 07:11:07.225 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+18-Dec-2025 07:11:07.960 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:11:08.016 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1892] milliseconds
+18-Dec-2025 07:11:08.153 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+18-Dec-2025 07:11:08.153 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.96]
+18-Dec-2025 07:11:08.188 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/opt/lms/tomcat/webapps/ROOT.war]
+18-Dec-2025 07:11:08.580 WARNING [main] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [5.0]. Default version will be used.
+18-Dec-2025 07:11:11.396 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+18-Dec-2025 07:11:11.495 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/opt/lms/tomcat/webapps/ROOT.war] has finished in [3,305] ms
+18-Dec-2025 07:11:11.495 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/manager]
+18-Dec-2025 07:11:11.551 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/manager] has finished in [56] ms
+18-Dec-2025 07:11:11.551 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/examples]
+18-Dec-2025 07:11:12.009 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/examples] has finished in [456] ms
+18-Dec-2025 07:11:12.010 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/lms]
+18-Dec-2025 07:11:12.146 WARNING [main] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [5.0]. Default version will be used.
+18-Dec-2025 07:11:13.835 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+18-Dec-2025 07:11:13.851 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/lms] has finished in [1,841] ms
+18-Dec-2025 07:11:13.852 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/host-manager]
+18-Dec-2025 07:11:13.894 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/host-manager] has finished in [42] ms
+18-Dec-2025 07:11:13.894 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/lms/tomcat/webapps/docs]
+18-Dec-2025 07:11:13.939 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/lms/tomcat/webapps/docs] has finished in [45] ms
+18-Dec-2025 07:11:13.945 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:11:13.979 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [5962] milliseconds
+18-Dec-2025 07:15:20.981 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+18-Dec-2025 07:15:21.184 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:15:21.666 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+18-Dec-2025 07:15:22.915 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8001"]
+18-Dec-2025 07:15:23.230 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8001"]

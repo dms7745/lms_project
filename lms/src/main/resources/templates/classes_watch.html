@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <title th:text="|영상 시청: ${classes.title}|">강의 영상</title>
+    <style>
+        .memo-item { border-left: 3px solid #0d6efd; background-color: #f8f9fa; }
+        .memo-item.editing { border-left-color: #ffc107; background-color: #fff3cd; }
+        .memo-timestamp { cursor: pointer; color: #0d6efd; font-weight: bold; }
+        .memo-timestamp:hover { text-decoration: underline; }
+        .memo-actions { opacity: 1; }
+        .edit-form { display: none; }
+        .memo-item.editing .edit-form { display: block; }
+        .memo-item.editing .memo-content-display { display: none; }
+        .current-time-badge { font-size: 0.9rem; }
+        .video-paused { background-color: #dc3545 !important; }
+    </style>
+</head>
+
+<body>
+    <th:block layout:fragment="content">
+        <div class="container my-4">
+
+            <!-- 페이지 제목 -->
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+                <div>
+                    <h2 class="fw-bold" th:text="${classes.title}">강의 제목</h2>
+                    <span class="text-muted">
+                        <i class="bi bi-person-fill me-1"></i>
+                        <span th:text="${classes?.user?.userName}">강사명</span>
+                    </span>
+                </div>
+                <a th:href="@{/classes/{id}(id=${classes.classesId})}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left-short"></i> 강의 상세로 돌아가기
+                </a>
+            </div>
+
+            <div class="row">
+                <!-- 비디오 영역 (왼쪽) -->
+                <div class="col-lg-8">
+                    <!-- 1. 비디오 영상이 있는 경우 -->
+                    <div class="mb-4" th:if="${videoUrl != null and !videoUrl.isEmpty()}">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="fw-bold mb-0">🎬 강의 영상</h4>
+                            <div>
+                                <a th:if="${isEnrolled}" th:href="@{/question/create(classesId=${classes.classesId})}"
+                                   class="btn btn-dark ms-2">
+                                    <i class="bi bi-play-circle-fill"></i> 질문하기
+                                </a>
+                                <form th:if="${isEnrolled and !isCompleted}" id="watch-form-video"
+                                      th:action="@{/enrollment/complete/{id}(id=${classes.classesId})}" method="post"
+                                      style="display:inline;">
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                    <input type="hidden" name="watch_duration" value="0" />
+                                    <button type="submit" class="btn btn-info ms-2">
+                                        <i class="bi bi-check-circle-fill"></i> 수강 완료
+                                    </button>
+                                </form>
+                                <span th:if="${isEnrolled and !isCompleted}" id="watch-timer-video"
+                                      class="badge bg-secondary align-middle ms-2"
+                                      style="min-width: 4em; font-variant-numeric: tabular-nums;">00:00</span>
+                                <span th:if="${isEnrolled and isCompleted}" class="btn btn-outline-success ms-2 disabled">
+                                    <i class="bi bi-check-lg"></i> 수강 완료됨
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-sm">
+                            <div class="card-body ratio ratio-16x9">
+                                <th:block th:with="
+                                    isYoutubeWatch=${#strings.contains(videoUrl, 'youtube.com/watch?v=')},
+                                    isYoutubeShort=${#strings.contains(videoUrl, 'youtu.be/')},
+                                    isYoutubeEmbed=${#strings.contains(videoUrl, 'youtube.com/embed/')},
+                                    isYoutube=${isYoutubeWatch or isYoutubeShort or isYoutubeEmbed},
+                                    videoId=${isYoutubeWatch ? #strings.substringAfter(videoUrl, 'v=') : (isYoutubeShort ? #strings.substringAfter(videoUrl, 'youtu.be/') : (isYoutubeEmbed ? #strings.substringAfter(videoUrl, 'embed/') : ''))}">
+                                    <!-- YouTube 영상용 플레이어 컨테이너 -->
+                                    <div th:if="${isYoutube}" id="youtube-player" th:data-video-id="${#strings.contains(videoId, '?') ? #strings.substringBefore(videoId, '?') : videoId}"></div>
+                                    <!-- 일반 비디오 -->
+                                    <video th:unless="${isYoutube}"
+                                           id="video-player" th:src="@{${videoUrl}}" controls width="100%" autoplay muted>
+                                    </video>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. 비디오 영상이 없는 경우 -->
+                    <div class="mb-4" th:if="${videoUrl == null or videoUrl.isEmpty()}">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="fw-bold mb-0">🎬 강의 영상</h4>
+                            <div>
+                                <a th:if="${isEnrolled}" th:href="@{/question/create(classesId=${classes.classesId})}"
+                                   class="btn btn-dark ms-2">
+                                    <i class="bi bi-play-circle-fill"></i> 질문하기
+                                </a>
+                                <form th:if="${isEnrolled and !isCompleted}" id="watch-form-no-video"
+                                      th:action="@{/enrollment/complete/{id}(id=${classes.classesId})}" method="post"
+                                      style="display:inline;">
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                    <input type="hidden" name="watch_duration" value="0" />
+                                    <button type="submit" class="btn btn-info ms-2">
+                                        <i class="bi bi-check-circle-fill"></i> 수강 완료
+                                    </button>
+                                </form>
+                                <span th:if="${isEnrolled and !isCompleted}" id="watch-timer-no-video"
+                                      class="badge bg-secondary align-middle ms-2"
+                                      style="min-width: 4em; font-variant-numeric: tabular-nums;">00:00</span>
+                                <span th:if="${isEnrolled and isCompleted}" class="btn btn-outline-success ms-2 disabled">
+                                    <i class="bi bi-check-lg"></i> 수강 완료됨
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-sm">
+                            <div class="card-body text-center p-5"
+                                 style="min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                                <i class="bi bi-camera-video-off display-3 text-muted"></i>
+                                <p class="mt-3 text-muted">등록된 강의 영상이 없습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. 강의 소개 -->
+                    <div class="mt-4">
+                        <h4 class="fw-bold mb-3">강의 소개</h4>
+                        <p th:text="${classes?.classesContent}">강의 소개 내용...</p>
+                    </div>
+                </div>
+
+                <!-- 메모 영역 (오른쪽) -->
+                <div class="col-lg-4" sec:authorize="isAuthenticated()">
+                    <div class="card shadow-sm sticky-top" style="top: 20px;">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 fw-bold">
+                                <i class="bi bi-journal-text me-2"></i>내 메모
+                                <span id="memo-count" class="badge bg-primary ms-2">0</span>
+                            </h5>
+                            <span id="current-video-time" class="badge bg-dark current-time-badge">
+                                <i class="bi bi-play-circle me-1"></i><span id="video-time-display">00:00</span>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <form id="memo-form" class="mb-3">
+                                <div class="mb-2">
+                                    <textarea id="memo-content" class="form-control" rows="3"
+                                              placeholder="메모를 입력하세요..."></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        
+                                    </small>
+                                    <button type="submit" class="btn btn-sm btn-primary">
+                                        <i class="bi bi-save"></i> 저장
+                                    </button>
+                                </div>
+                            </form>
+                            <div id="memo-list" style="max-height: 400px; overflow-y: auto;">
+                                <div class="text-center text-muted py-3">
+                                    <i class="bi bi-journal display-4"></i>
+                                    <p class="mt-2">작성된 메모가 없습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+    <th:block layout:fragment="script">
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script th:inline="javascript">
+            const currentUserId = /*[[${currentUserId}]]*/ 'user_guest';
+            const classesId = /*[[${classes.classesId}]]*/ 0;
+            const csrfToken = /*[[${_csrf.token}]]*/ '';
+            const csrfHeader = /*[[${_csrf.headerName}]]*/ '';
+            const isCompleted = /*[[${isCompleted}]]*/ false;
+
+            let currentVideoTime = 0;
+            let isPlaying = false;
+            let youtubePlayer = null;
+
+            function onYouTubeIframeAPIReady() {
+                const playerDiv = document.getElementById('youtube-player');
+                if (playerDiv) {
+                    const videoId = playerDiv.getAttribute('data-video-id');
+                    youtubePlayer = new YT.Player('youtube-player', {
+                        videoId: videoId,
+                        playerVars: { 'autoplay': 1, 'mute': 1, 'rel': 0 },
+                        events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                        }
+                    });
+                }
+            }
+
+            function onPlayerReady(event) {
+                updateVideoTime();
+            }
+
+            function onPlayerStateChange(event) {
+                const timeBadge = document.getElementById('current-video-time');
+                if (event.data === YT.PlayerState.PLAYING) {
+                    isPlaying = true;
+                    if (timeBadge) {
+                        timeBadge.classList.remove('video-paused', 'bg-secondary');
+                        timeBadge.classList.add('bg-dark');
+                    }
+                } else if (event.data === YT.PlayerState.PAUSED) {
+                    isPlaying = false;
+                    if (timeBadge) {
+                        timeBadge.classList.remove('bg-dark');
+                        timeBadge.classList.add('video-paused');
+                    }
+                } else {
+                    isPlaying = false;
+                }
+            }
+
+            function updateVideoTime() {
+                setInterval(() => {
+                    const videoTimeDisplay = document.getElementById('video-time-display');
+                    const timerDisplayVideo = document.getElementById('watch-timer-video');
+                    
+                    if (youtubePlayer && youtubePlayer.getCurrentTime) {
+                        currentVideoTime = Math.floor(youtubePlayer.getCurrentTime());
+                    } else {
+                        const videoElement = document.getElementById('video-player');
+                        if (videoElement && !isNaN(videoElement.currentTime)) {
+                            currentVideoTime = Math.floor(videoElement.currentTime);
+                            isPlaying = !videoElement.paused;
+                            const timeBadge = document.getElementById('current-video-time');
+                            if (timeBadge) {
+                                if (isPlaying) {
+                                    timeBadge.classList.remove('video-paused');
+                                    timeBadge.classList.add('bg-dark');
+                                } else {
+                                    timeBadge.classList.remove('bg-dark');
+                                    timeBadge.classList.add('video-paused');
+                                }
+                            }
+                        }
+                    }
+                    
+                    const formattedTime = formatTime(currentVideoTime);
+                    if (videoTimeDisplay) videoTimeDisplay.textContent = formattedTime;
+                    if (timerDisplayVideo) timerDisplayVideo.textContent = formattedTime;
+                    
+                    if (isPlaying) {
+                        updateServerProgress(currentVideoTime);
+                    }
+                }, 1000);
+            }
+
+            function handleAuthError(response) {
+                if (response.status === 401 || response.status === 403 || response.redirected) {
+                    window.location.href = '/user/login';
+                    return true;
+                }
+                return false;
+            }
+
+            async function authFetch(url, options = {}) {
+                try {
+                    const response = await fetch(url, options);
+                    if (handleAuthError(response)) {
+                        throw new Error('인증 필요');
+                    }
+                    return response;
+                } catch (error) {
+                    if (error.name === 'TypeError') {
+                        window.location.href = '/user/login';
+                    }
+                    throw error;
+                }
+            }
+
+            function formatTime(totalSeconds) {
+                if (totalSeconds === null || totalSeconds === undefined || isNaN(totalSeconds)) return '00:00';
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                if (hours > 0) {
+                    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                }
+                return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const videoElement = document.getElementById('video-player');
+                if (videoElement) {
+                    videoElement.addEventListener('play', () => { isPlaying = true; });
+                    videoElement.addEventListener('pause', () => { isPlaying = false; });
+                    updateVideoTime();
+                }
+                loadMemos();
+                setupMemoForm();
+            });
+
+            function updateServerProgress(currentSeconds) {
+                const formData = new FormData();
+                formData.append("watched_seconds", currentSeconds);
+                fetch(`/enrollment/progress/${classesId}`, {
+                    method: "POST",
+                    headers: { [csrfHeader]: csrfToken },
+                    body: formData
+                }).catch(error => console.error("진도율 전송 실패", error));
+            }
+
+            function loadMemos() {
+                authFetch(`/memo/list/${classesId}`, {
+                    headers: { [csrfHeader]: csrfToken }
+                })
+                .then(response => {
+                    const contentType = response.headers.get('content-type');
+                    if (!contentType || !contentType.includes('application/json')) {
+                        window.location.href = '/user/login';
+                        throw new Error('세션 만료');
+                    }
+                    return response.json();
+                })
+                .then(memos => {
+                    const memoList = document.getElementById('memo-list');
+                    const memoCount = document.getElementById('memo-count');
+                    if (!memoList) return;
+                    
+                    if (memos.length === 0) {
+                        memoList.innerHTML = `<div class="text-center text-muted py-3"><i class="bi bi-journal display-4"></i><p class="mt-2">작성된 메모가 없습니다.</p></div>`;
+                        memoCount.textContent = '0';
+                        return;
+                    }
+
+                    memoCount.textContent = memos.length;
+                    memoList.innerHTML = memos.map(memo => `
+                        <div class="memo-item p-2 mb-2 rounded" data-memo-id="${memo.memoId}">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    ${memo.videoTimestamp !== null && memo.videoTimestamp !== undefined ? 
+                                        `<span class="memo-timestamp badge bg-warning text-dark me-2" onclick="seekToTime(${memo.videoTimestamp})" title="클릭하면 해당 시점으로 이동"><i class="bi bi-play-fill"></i> ${memo.formattedTimestamp}</span>` : ''}
+                                    <small class="text-muted">${memo.isModified ? memo.modifiedDate + ' (수정됨)' : memo.createdDate}</small>
+                                </div>
+                                <div class="memo-actions">
+                                    <button class="btn btn-sm btn-outline-secondary me-1" onclick="editMemo(${memo.memoId})" title="수정"><i class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger" onclick="deleteMemo(${memo.memoId})" title="삭제"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="memo-content-display"><p class="mb-0 mt-1" style="white-space: pre-wrap;">${escapeHtml(memo.content)}</p></div>
+                            <div class="edit-form mt-2">
+                                <textarea class="form-control form-control-sm mb-2 edit-content" rows="2">${escapeHtml(memo.content)}</textarea>
+                                <div class="d-flex justify-content-end gap-1">
+                                    <button class="btn btn-sm btn-secondary" onclick="cancelEdit(${memo.memoId})">취소</button>
+                                    <button class="btn btn-sm btn-primary" onclick="saveMemo(${memo.memoId}, ${memo.videoTimestamp || 'null'})">저장</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                })
+                .catch(error => {
+                    if (error.message !== '세션 만료' && error.message !== '인증 필요') {
+                        console.error("메모 로드 실패", error);
+                    }
+                });
+            }
+
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            function setupMemoForm() {
+                const form = document.getElementById('memo-form');
+                if (!form) return;
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const content = document.getElementById('memo-content').value.trim();
+                    if (!content) { alert('메모 내용을 입력하세요.'); return; }
+
+                    authFetch(`/memo/create/${classesId}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', [csrfHeader]: csrfToken },
+                        body: JSON.stringify({ content: content, videoTimestamp: currentVideoTime })
+                    })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.success) {
+                            document.getElementById('memo-content').value = '';
+                            loadMemos();
+                        } else { alert(result.message); }
+                    })
+                    .catch(error => { if (error.message !== '인증 필요') { console.error("메모 저장 실패", error); alert('메모 저장에 실패했습니다.'); }});
+                });
+            }
+
+            function editMemo(memoId) {
+                const memoItem = document.querySelector(`[data-memo-id="${memoId}"]`);
+                if (memoItem) {
+                    document.querySelectorAll('.memo-item.editing').forEach(item => item.classList.remove('editing'));
+                    memoItem.classList.add('editing');
+                    memoItem.querySelector('.edit-content').focus();
+                }
+            }
+
+            function cancelEdit(memoId) {
+                const memoItem = document.querySelector(`[data-memo-id="${memoId}"]`);
+                if (memoItem) { memoItem.classList.remove('editing'); loadMemos(); }
+            }
+
+            function saveMemo(memoId, videoTimestamp) {
+                const memoItem = document.querySelector(`[data-memo-id="${memoId}"]`);
+                const content = memoItem.querySelector('.edit-content').value.trim();
+                if (!content) { alert('메모 내용을 입력하세요.'); return; }
+
+                authFetch(`/memo/edit/${memoId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', [csrfHeader]: csrfToken },
+                    body: JSON.stringify({ content: content, videoTimestamp: videoTimestamp })
+                })
+                .then(response => response.json())
+                .then(result => { if (result.success) { loadMemos(); } else { alert(result.message); }})
+                .catch(error => { if (error.message !== '인증 필요') { console.error("메모 수정 실패", error); alert('메모 수정에 실패했습니다.'); }});
+            }
+
+            function deleteMemo(memoId) {
+                if (!confirm('메모를 삭제하시겠습니까?')) return;
+                authFetch(`/memo/delete/${memoId}`, { method: 'DELETE', headers: { [csrfHeader]: csrfToken }})
+                .then(response => response.json())
+                .then(result => { if (result.success) { loadMemos(); } else { alert(result.message); }})
+                .catch(error => { if (error.message !== '인증 필요') { console.error("메모 삭제 실패", error); alert('메모 삭제에 실패했습니다.'); }});
+            }
+
+            function seekToTime(seconds) {
+                if (youtubePlayer && youtubePlayer.seekTo) {
+                    youtubePlayer.seekTo(seconds, true);
+                    youtubePlayer.playVideo();
+                } else {
+                    const videoElement = document.getElementById('video-player');
+                    if (videoElement) { videoElement.currentTime = seconds; videoElement.play(); }
+                }
+            }
+        </script>
+    </th:block>
+</body>
+</html>
